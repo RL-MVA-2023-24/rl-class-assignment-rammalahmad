@@ -176,9 +176,7 @@ nb_neurons= 512
 DQN = torch.nn.Sequential(nn.Linear(state_dim, nb_neurons),
                           nn.SiLU(),
                           nn.Linear(nb_neurons, nb_neurons),
-                          nn.SiLU(), 
-                          nn.Linear(nb_neurons, nb_neurons),
-                          nn.SiLU(), 
+                          nn.SiLU(),
                           nn.Linear(nb_neurons, nb_neurons),
                           nn.SiLU(), 
                           nn.Linear(nb_neurons, n_action)).to(device)
@@ -211,10 +209,9 @@ def seed_everything(seed: int = 42):
 
 
 if __name__ == "__main__":
-    seed_everything(seed=42)
-
     trainer = dqn_agent(config=config, model=DQN)
-    episode_return, MC_avg_discounted_reward, MC_avg_total_reward, V_init_state = trainer.train(env, 400)
+    episode_return, MC_avg_discounted_reward, MC_avg_total_reward, V_init_state = trainer.train(env, 1000)
+    # seed_everything(seed=42)
     # agent = ProjectAgent()
     # agent.load()
     # print(evaluate_HIV(agent=agent, nb_episode=1))
