@@ -195,7 +195,7 @@ class ProjectAgent:
 
     def load(self, path="/dqn.pt"):
         path = os.getcwd() + path
-        self.model.load_state_dict(torch.load(path))
+        self.model.load_state_dict(torch.load(path, map_location='cpu'))
 
 
 
